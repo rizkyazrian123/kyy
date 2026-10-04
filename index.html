@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RIZKY. — Identity // 01</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{
+    --bg:#080808;
+    --card:#111111;
+    --card2:#171717;
+    --text:#f5f5f5;
+    --muted:#929292;
+    --line:#292929;
+    --red:#e50914;
+    --red2:#ff2631;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+    transition:.3s;
+}
+
+body.light{
+    --bg:#f4f4f4;
+    --card:#ffffff;
+    --card2:#eeeeee;
+    --text:#111111;
+    --muted:#666666;
+    --line:#d8d8d8;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,input{
+    font:inherit;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+.section{
+    padding:110px 0;
+}
+
+.eyebrow{
+    color:var(--red);
+    font:700 13px "Space Grotesk";
+    letter-spacing:3px;
+}
+
+.section-title{
+    font:700 clamp(45px,7vw,78px) "Space Grotesk";
+    line-height:.95;
+    letter-spacing:-3px;
+    margin-top:10px;
+}
+
+.section-title span{
+    color:var(--red);
+}
+
+.section-desc{
+    color:var(--muted);
+    max-width:650px;
+    margin-top:20px;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:74px;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    background:rgba(8,8,8,.78);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+body.light .navbar{
+    background:rgba(244,244,244,.85);
+    border-color:var(--line);
+}
+
+.nav-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font:700 23px "Space Grotesk";
+}
+
+.logo::after{
+    content:"";
+    display:inline-block;
+    width:7px;
+    height:7px;
+    background:var(--red);
+    margin-left:4px;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+    color:var(--muted);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    position:relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:var(--text);
+}
+
+.nav-links a.active::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-10px;
+    height:2px;
+    background:var(--red);
+}
+
+.nav-actions{
+    display:flex;
+    gap:10px;
+}
+
+.icon-btn,
+.menu-btn{
+    width:38px;
+    height:38px;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--text);
+    border-radius:50%;
+    cursor:pointer;
+    display:grid;
+    place-items:center;
+    transition:.25s;
+}
+
+.icon-btn:hover,
+.menu-btn:hover{
+    border-color:var(--red);
+    transform:translateY(-2px);
+}
+
+.menu-btn{
+    display:none;
+    border-radius:9px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    padding-top:74px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    right:-250px;
+    top:15%;
+    background:radial-gradient(
+        circle,
+        rgba(229,9,20,.18),
+        transparent 68%
+    );
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:70px;
+    align-items:center;
+}
+
+.hero-copy{
+    animation:fadeUp .8s ease;
+}
+
+.hero-kicker{
+    color:var(--red);
+    font:600 13px "Space Grotesk";
+    letter-spacing:4px;
+    margin-bottom:23px;
+}
+
+.hero h1{
+    font:700 clamp(52px,8vw,105px) "Space Grotesk";
+    line-height:.88;
+    letter-spacing:-6px;
+}
+
+.hero h1 span{
+    color:var(--red);
+}
+
+.hero-sub{
+    font:500 18px "Space Grotesk";
+    margin-top:25px;
+}
+
+.hero-desc{
+    max-width:570px;
+    color:var(--muted);
+    margin-top:13px;
+}
+
+.btn-row{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    border:1px solid var(--red);
+    background:var(--red);
+    color:white;
+    padding:13px 20px;
+    border-radius:7px;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    transition:.25s;
+}
+
+.btn:hover{
+    background:var(--red2);
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(229,9,20,.22);
+}
+
+.btn.secondary{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--text);
+}
+
+.btn.secondary:hover{
+    color:var(--red);
+    border-color:var(--red);
+    box-shadow:none;
+}
+
+/* PROFILE */
+
+.photo-wrap{
+    position:relative;
+    max-width:470px;
+    justify-self:end;
+    width:100%;
+}
+
+.photo-frame{
+    position:relative;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--card);
+}
+
+.photo-frame::before,
+.photo-frame::after{
+    content:"";
+    position:absolute;
+    width:42px;
+    height:42px;
+    border-color:var(--red);
+    z-index:3;
+    pointer-events:none;
+}
+
+.photo-frame::before{
+    top:12px;
+    left:12px;
+    border-top:2px solid;
+    border-left:2px solid;
+}
+
+.photo-frame::after{
+    bottom:12px;
+    right:12px;
+    border-bottom:2px solid;
+    border-right:2px solid;
+}
+
+.photo-placeholder{
+    width:100%;
+    height:100%;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    background:linear-gradient(145deg,#191919,#080808);
+}
+
+.photo-placeholder strong{
+    display:block;
+    color:var(--red);
+    font:700 60px "Space Grotesk";
+}
+
+.photo-placeholder small{
+    color:var(--muted);
+}
+
+.profile-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.change-photo{
+    position:absolute;
+    right:-18px;
+    bottom:28px;
+    width:92px;
+    height:92px;
+    border-radius:50%;
+    background:var(--red);
+    color:#fff;
+    border:5px solid var(--bg);
+    display:grid;
+    place-items:center;
+    text-align:center;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:800;
+    line-height:1.2;
+    z-index:5;
+    transition:.25s;
+}
+
+.change-photo:hover{
+    transform:scale(1.07);
+}
+
+/* ================= ABOUT ================= */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:80px;
+}
+
+.about-text{
+    color:var(--muted);
+    font-size:17px;
+}
+
+.about-text p+p{
+    margin-top:18px;
+}
+
+.signature{
+    margin-top:30px;
+    color:var(--red);
+    font:italic 30px "Space Grotesk";
+}
+
+.info-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:10px;
+}
+
+.info-item{
+    display:flex;
+    gap:15px;
+    padding:18px;
+    border-bottom:1px solid var(--line);
+}
+
+.info-item:last-child{
+    border-bottom:0;
+}
+
+.info-icon{
+    width:38px;
+    height:38px;
+    flex-shrink:0;
+    display:grid;
+    place-items:center;
+    border-radius:9px;
+    background:rgba(229,9,20,.1);
+    color:var(--red);
+}
+
+.info-label{
+    font-size:10px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+.info-value{
+    font-size:14px;
+    font-weight:600;
+}
+
+/* ================= SKILLS ================= */
+
+.skills-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:70px;
+}
+
+.skill-list{
+    display:grid;
+    gap:15px;
+}
+
+.skill{
+    padding:18px 20px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    transition:.25s;
+}
+
+.skill:hover{
+    transform:translateX(6px);
+    border-color:#555;
+}
+
+.skill-top{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    font-weight:700;
+}
+
+.skill-top span:last-child{
+    color:var(--red);
+}
+
+.bar{
+    height:5px;
+    margin-top:11px;
+    background:#292929;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.bar i{
+    display:block;
+    height:100%;
+    width:0;
+    background:var(--red);
+    transition:1.1s;
+}
+
+/* ================= PROJECTS ================= */
+
+.filter-row{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.filter{
+    padding:9px 14px;
+    border-radius:30px;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--muted);
+    cursor:pointer;
+    font-size:11px;
+    font-weight:700;
+}
+
+.filter.active,
+.filter:hover{
+    color:white;
+    background:var(--red);
+    border-color:var(--red);
+}
+
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.project-card{
+    overflow:hidden;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.project-card:hover{
+    transform:translateY(-7px);
+    border-color:#555;
+}
+
+.project-thumb{
+    height:190px;
+    position:relative;
+    overflow:hidden;
+}
+
+.project-number{
+    position:absolute;
+    top:12px;
+    left:12px;
+    z-index:2;
+    padding:4px 8px;
+    background:var(--red);
+    color:white;
+    font-size:10px;
+    font-weight:800;
+}
+
+.project-body{
+    padding:18px;
+}
+
+.project-body h3{
+    font:600 20px "Space Grotesk";
+}
+
+.project-body p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:7px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-top:13px;
+}
+
+.tag{
+    color:var(--muted);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:4px 7px;
+    font-size:9px;
+}
+
+.open-label{
+    color:var(--red);
+    font-size:10px;
+    font-weight:800;
+    margin-top:15px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.gallery-item{
+    height:220px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:var(--card);
+    cursor:pointer;
+}
+
+.gallery-item:first-child{
+    grid-column:span 2;
+    grid-row:span 2;
+    height:452px;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    min-width:100%;
+    min-height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.07);
+}
+
+.gallery-item::after{
+    content:"VIEW";
+    position:absolute;
+    right:12px;
+    bottom:12px;
+    padding:5px 8px;
+    background:rgba(0,0,0,.75);
+    color:white;
+    font-size:9px;
+    opacity:0;
+    transition:.2s;
+}
+
+.gallery-item:hover::after{
+    opacity:1;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:55px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+}
+
+.contact-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.contact-link{
+    padding:13px 17px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:12px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.contact-link:hover{
+    border-color:var(--red);
+    color:var(--red);
+    transform:translateY(-3px);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+    color:var(--muted);
+    font-size:11px;
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:300;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(10px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    position:relative;
+    width:min(700px,100%);
+    max-height:90vh;
+    overflow:auto;
+    padding:30px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+}
+
+.modal-box h2{
+    font:700 35px "Space Grotesk";
+    margin-top:8px;
+}
+
+.modal-box p{
+    color:var(--muted);
+    margin-top:12px;
+}
+
+.modal-close{
+    position:absolute;
+    right:15px;
+    top:15px;
+}
+
+.modal-preview{
+    width:100%;
+    max-height:300px;
+    object-fit:cover;
+    border-radius:9px;
+    margin-top:20px;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translate(-50%,20px);
+    background:var(--text);
+    color:var(--bg);
+    padding:11px 18px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:700;
+    opacity:0;
+    pointer-events:none;
+    z-index:500;
+    transition:.3s;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+/* ================= ANIMATION ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:.7s;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        position:absolute;
+        top:74px;
+        left:4%;
+        right:4%;
+        display:none;
+        flex-direction:column;
+        padding:15px;
+        background:var(--card);
+        border:1px solid var(--line);
+        border-radius:12px;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:10px;
+    }
+
+    .nav-links a.active::after{
+        display:none;
+    }
+
+    .menu-btn{
+        display:grid;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .skills-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:120px;
+        padding-bottom:80px;
+    }
+
+    .photo-wrap{
+        justify-self:center;
+    }
+
+    .projects-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery-item:first-child{
+        grid-column:span 2;
+        height:300px;
+    }
+
+    .contact-box{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+
+@media(max-width:600px){
+
+    .section{
+        padding:80px 0;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .projects-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery-item,
+    .gallery-item:first-child{
+        grid-column:auto;
+        grid-row:auto;
+        height:180px;
+    }
+
+    .contact-box{
+        padding:30px 22px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .change-photo{
+        width:78px;
+        height:78px;
+        right:-7px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+<div class="container nav-inner">
+
+<a href="#home" class="logo">RIZKY</a>
+
+<nav class="nav-links" id="navLinks">
+<a href="#home" class="active">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="nav-actions">
+
+<button class="icon-btn" id="themeBtn">
+☾
+</button>
+
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
+
+</div>
+
+</div>
+</header>
+
+
+<main>
+
+<!-- ================= HOME ================= -->
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<div class="hero-copy">
+
+<div class="hero-kicker">
+IDENTITY // 01
+</div>
+
+<h1>
+HELLO,<br>
+I'M RIZKY <span>AZRIAN.</span>
+</h1>
+
+<div class="hero-sub">
+Student / Creator / Explorer
+</div>
+
+<p class="hero-desc">
+Seorang pelajar yang selalu ingin belajar hal baru,
+mengeksplorasi ide kreatif, dan membangun sesuatu
+yang bermakna dari apa yang saya pelajari.
+</p>
+
+<div class="btn-row">
+
+<a href="#about" class="btn">
+View Profile →
+</a>
+
+<a href="#projects" class="btn secondary">
+See Projects
+</a>
+
+</div>
+
+</div>
+
+
+<div class="photo-wrap">
+
+<div class="photo-frame">
+
+<div class="photo-placeholder" id="photoPlaceholder">
+
+<div>
+<strong>RA</strong>
+<small>Tambahkan foto profilmu</small>
+</div>
+
+</div>
+
+<img
+id="profileImg"
+class="profile-img"
+alt="Foto profil"
+style="display:none"
+>
+
+</div>
+
+<label class="change-photo" for="photoInput">
+CHANGE<br>
+PHOTO
+</label>
+
+<input
+type="file"
+id="photoInput"
+accept="image/*"
+hidden
+>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section" id="about">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="eyebrow">
+02 / 06
+</div>
+
+<h2 class="section-title">
+ABOUT <span>ME</span>
+</h2>
+
+<p class="section-desc">
+Sedikit tentang siapa saya, apa yang saya sukai,
+dan apa yang sedang saya pelajari.
+</p>
+
+</div>
+
+
+<div class="about-grid">
+
+<div class="about-text reveal">
+
+<p>
+Halo! Saya <strong>Muhammad Rizky Azrian</strong>,
+seorang pelajar yang tertarik pada teknologi,
+desain, dan hal-hal kreatif.
+</p>
+
+<p>
+Saya senang mencoba hal baru, membuat project sederhana,
+belajar dari proses, dan terus mengembangkan kemampuan
+sedikit demi sedikit.
+</p>
+
+<p>
+Website ini adalah ruang digital untuk memperkenalkan diri,
+menyimpan project, dan menunjukkan beberapa hal
+yang pernah saya kerjakan.
+</p>
+
+<div class="signature">
+Rizky Azrian.
+</div>
+
+</div>
+
+
+<div class="info-card reveal">
+
+<div class="info-item">
+<div class="info-icon">◎</div>
+<div>
+<div class="info-label">Name</div>
+<div class="info-value">Muhammad Rizky Azrian</div>
+</div>
+</div>
+
+<div class="info-item">
+<div class="info-icon">▣</div>
+<div>
+<div class="info-label">Class</div>
+<div class="info-value">X-I</div>
+</div>
+</div>
+
+<div class="info-item">
+<div class="info-icon">#</div>
+<div>
+<div class="info-label">Number</div>
+<div class="info-value">24</div>
+</div>
+</div>
+
+<div class="info-item">
+<div class="info-icon">⌖</div>
+<div>
+<div class="info-label">Location</div>
+<div class="info-value">Bandung</div>
+</div>
+</div>
+
+<div class="info-item">
+<div class="info-icon">◉</div>
+<div>
+<div class="info-label">Status</div>
+<div class="info-value">Student</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section class="section" id="skills">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="eyebrow">
+03 / 06
+</div>
+
+<h2 class="section-title">
+MY <span>SKILLS</span>
+</h2>
+
+<p class="section-desc">
+Kemampuan yang sedang saya pelajari dan terus saya kembangkan.
+</p>
+
+</div>
+
+
+<div class="skills-grid">
+
+<div class="reveal">
+
+<h3 style="font:600 28px 'Space Grotesk';">
+WHAT I CAN DO.
+</h3>
+
+<p class="section-desc">
+Saya percaya kemampuan bukan sesuatu yang langsung sempurna.
+Yang penting adalah terus mencoba dan berkembang.
+</p>
+
+</div>
+
+
+<div class="skill-list reveal" id="skillList">
+
+<div class="skill">
+<div class="skill-top">
+<span>HTML</span>
+<span>70%</span>
+</div>
+<div class="bar">
+<i data-width="70%"></i>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-top">
+<span>CSS</span>
+<span>65%</span>
+</div>
+<div class="bar">
+<i data-width="65%"></i>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-top">
+<span>JavaScript</span>
+<span>55%</span>
+</div>
+<div class="bar">
+<i data-width="55%"></i>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-top">
+<span>Editing</span>
+<span>65%</span>
+</div>
+<div class="bar">
+<i data-width="65%"></i>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-top">
+<span>Design</span>
+<span>60%</span>
+</div>
+<div class="bar">
+<i data-width="60%"></i>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-top">
+<span>Communication</span>
+<span>75%</span>
+</div>
+<div class="bar">
+<i data-width="75%"></i>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<section class="section" id="projects">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="eyebrow">
+04 / 06
+</div>
+
+<h2 class="section-title">
+MY <span>PROJECTS</span>
+</h2>
+
+<p class="section-desc">
+Beberapa project yang pernah saya buat.
+Klik kartu untuk melihat detailnya.
+</p>
+
+</div>
+
+
+<div class="filter-row reveal">
+
+<button class="filter active" data-filter="all">
+A
